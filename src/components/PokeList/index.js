@@ -1,30 +1,14 @@
-import React from 'react'
+import React from "react";
+import PokeItem from "../PokeItem";
 
-const PokeList = () => {
-    return (
-        <div className="right-container__screen">
-            <div className="list-item"></div>
-            <div className="list-item"></div>
-            <div className="list-item"></div>
-            <div className="list-item"></div>
-            <div className="list-item"></div>
-            <div className="list-item"></div>
-            <div className="list-item"></div>
-            <div className="list-item"></div>
-            <div className="list-item"></div>
-            <div className="list-item"></div>
-            <div className="list-item"></div>
-            <div className="list-item"></div>
-            <div className="list-item"></div>
-            <div className="list-item"></div>
-            <div className="list-item"></div>
-            <div className="list-item"></div>
-            <div className="list-item"></div>
-            <div className="list-item"></div>
-            <div className="list-item"></div>
-            <div className="list-item"></div>
-        </div>
-    )
-}
+const PokeList = ({ pokemon }) => {
+  const renderedPokemon = pokemon.map((pokemon) => {
+    const urlArray = pokemon.url.split("/");
+    const id = urlArray[6];
+    return <PokeItem key={pokemon.name} pokemonName={pokemon.name} id={id} />;
+  });
+
+  return <div className="right-container__screen">{renderedPokemon}</div>;
+};
 
 export default PokeList;

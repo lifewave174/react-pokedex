@@ -1,22 +1,38 @@
 import React, { useState, useEffect } from "react";
 import MainLayout from "./components/MainLayout";
 
-
 const App = () => {
-
-  const [pokemonDetails, setDetails] = useState([])
+  const [pokemon, setPokemon] = useState([]);
+  const [offset, setOffset] = useState(0)
 
   useEffect(() => {
-    const results = async () => {
-      const { data } = await fetch("")
+    const search = async () => {
+      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=20`);
+      const { results } = await response.json();
+      setPokemon(results);
+    };
+    search();
+  }, [offset]);
 
+  const onNextSelect = () => {
+    setOffset(offset + 20)
+    console.log(offset)
+  }
+
+  const onPrevSelect = () => {
+    if (offset === 0) {
+      return;
     }
-
-  })
+    setOffset(offset - 20)
+  }
 
   return (
     <div>
-      <MainLayout />
+      <MainLayout
+        pokemon={pokemon}
+        onNextSelect={onNextSelect}
+        onPrevSelect={onPrevSelect}
+      />
     </div>
   );
 };

@@ -1,10 +1,10 @@
 import React from 'react'
 
-const PrevNext = () => {
+const PrevNext = ({ onNextSelect, onPrevSelect }) => {
     return (
         <div className="right-container__buttons">
-            <div className="left-button">Prev</div>
-            <div className="right-button">Next</div>
+            <div className="left-button" onClick={onPrevSelect}>Prev</div>
+            <div className="right-button" onClick={onNextSelect}>Next</div>
         </div>
     )
 }
