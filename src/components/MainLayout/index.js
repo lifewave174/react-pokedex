@@ -5,7 +5,13 @@ import PokeList from "../PokeList";
 import PrevNext from "../PrevNext";
 import "./style.css";
 
-const MainLayout = ({ pokemon, onNextSelect, onPrevSelect }) => {
+const MainLayout = ({
+  pokemon,
+  onNextSelect,
+  onPrevSelect,
+  onPokeSelect,
+  pokeName,
+}) => {
   return (
     <div className="body">
       <img src={pokelogo} className="logo" alt="pokedex logo" />
@@ -21,7 +27,7 @@ const MainLayout = ({ pokemon, onNextSelect, onPrevSelect }) => {
           </div>
           <div className="left-container__main-section-container">
             <div className="left-container__main-section">
-              <PokeCards pokemon={pokemon} />
+              <PokeCards pokeName={pokeName} />
               <div className="left-container__controllers">
                 <div className="controllers__d-pad">
                   <div className="d-pad__cell top"></div>
@@ -44,7 +50,7 @@ const MainLayout = ({ pokemon, onNextSelect, onPrevSelect }) => {
         </div>
         <div className="right-container">
           <div className="right-container__black">
-            <PokeList pokemon={pokemon} />
+            <PokeList pokemon={pokemon} onPokeSelect={onPokeSelect} />
           </div>
           <PrevNext onNextSelect={onNextSelect} onPrevSelect={onPrevSelect} />
         </div>

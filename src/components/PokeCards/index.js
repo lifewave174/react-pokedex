@@ -1,12 +1,13 @@
 import React from 'react'
 
-const PokeCards = () => {
+const PokeCards = ({ pokeName }) => {
+    const hideorshow = "hide"
     return (
         <div className="main-section__white">
             <div className="main-section__black">
-                <div className="main-screen hide">
+                <div className={`main screen ${hideorshow}`}>
                     <div className="screen__header">
-                        <span className="poke-name"></span>
+                        <span className="poke-name">{pokeName}</span>
                         <span className="poke-id"></span>
                     </div>
                     <div className="screen__image">
