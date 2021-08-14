@@ -1,8 +1,8 @@
 import React from "react";
-import pokelogo from "./pokedex_logo.png";
 import PokeCards from "../PokeCards";
 import PokeList from "../PokeList";
 import PrevNext from "../PrevNext";
+import pokelogo from "./pokedex_logo.png";
 import "./style.css";
 
 const MainLayout = ({

@@ -37,12 +37,11 @@ const App = () => {
         `https://pokeapi.co/api/v2/pokemon/${pokeId}`
       );
       const results = await response.json();
-      console.log(results);
 
-      //set name
+      //set name and make the first character uppercase
       setName(
         results.forms[0].name.charAt(0).toUpperCase() +
-          results.forms[0].name.slice(1)
+        results.forms[0].name.slice(1)
       );
 
       //type
@@ -51,8 +50,6 @@ const App = () => {
       //secondType
       if (results.types.length > 1) {
         setType2(results.types[1].type.name);
-      } else {
-        setType2("");
       }
 
       //set weight
@@ -70,7 +67,7 @@ const App = () => {
     pokeDetail();
   }, [pokeId]);
 
-  //function below to select individual pokemon to be displayed in the pokemon cards
+  //function below to select individual pokemon to be displayed in the pokemon cards. The function fetches the selected id and inserts it in the api in order to fetch more details about the individual pokemons. 
 
   const onPokeSelect = (id) => {
     setPokeId(id);

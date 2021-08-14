@@ -11,7 +11,6 @@ const PokeCards = ({
   backSprite,
 }) => {
   const hideorshow = type;
-  let isType = "";
   return (
     <div className="main-section__white">
       <div className="main-section__black">
@@ -28,10 +27,8 @@ const PokeCards = ({
             <div className="stats__types">
               <span className="poke-type-one">{type}</span>
               <span
-                className={`poke-type-two ${
-                  type2 === "" ? (isType = "hide") : ""
-                }`}
-              >
+                className={`poke-type-two ${type2 === "" ? "hide" : ""
+                  }`}>
                 {type2}
               </span>
             </div>
