@@ -8,6 +8,15 @@ body {
   display: flex;
   font-family: sans-serif;
   justify-content: center;
+  background-color: rgba(211, 193, 35, 0.692);
+}
+
+.logo {
+  padding-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .pokedex {

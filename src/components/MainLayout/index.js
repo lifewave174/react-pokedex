@@ -11,10 +11,19 @@ const MainLayout = ({
   onPrevSelect,
   onPokeSelect,
   pokeName,
+  pokeId,
+  type,
+  type2,
+  weight,
+  height,
+  frontSprite,
+  backSprite,
 }) => {
   return (
     <div className="body">
-      <img src={pokelogo} className="logo" alt="pokedex logo" />
+      <div className="logo">
+        <img src={pokelogo} alt="pokedex logo" />
+      </div>
       <div className="pokedex">
         <div className="left-container">
           <div className="left-container__top-section">
@@ -27,7 +36,16 @@ const MainLayout = ({
           </div>
           <div className="left-container__main-section-container">
             <div className="left-container__main-section">
-              <PokeCards pokeName={pokeName} />
+              <PokeCards
+                pokeName={pokeName}
+                pokeId={pokeId}
+                type={type}
+                weight={weight}
+                height={height}
+                frontSprite={frontSprite}
+                backSprite={backSprite}
+                type2={type2}
+              />
               <div className="left-container__controllers">
                 <div className="controllers__d-pad">
                   <div className="d-pad__cell top"></div>

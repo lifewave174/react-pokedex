@@ -2,14 +2,20 @@ import React, { useState, useEffect } from "react";
 import MainLayout from "./components/MainLayout";
 
 const App = () => {
+  //setting the state here for all the pokemon details that need to be displayed
+
   const [pokemon, setPokemon] = useState([]);
   const [offset, setOffset] = useState(0);
+  const [pokeId, setPokeId] = useState(0);
   const [pokeName, setName] = useState("");
+  const [type, setType] = useState("hide");
+  const [type2, setType2] = useState("");
+  const [weight, setWeight] = useState(0);
+  const [height, setHeight] = useState(0);
+  const [frontSprite, setFrontSprite] = useState("");
+  const [backSprite, setBackSprite] = useState("");
 
-
-  const onPokeSelect = (pokemon) => {
-    setName(pokemon);
-  };
+  //useEffect to fetch the initial data which is rendered in the pokemon list
 
   useEffect(() => {
     const search = async () => {
@@ -22,9 +28,58 @@ const App = () => {
     search();
   }, [offset]);
 
+  //second useEffect to render pokemon details from the list selection
+
+  useEffect(() => {
+    const pokeDetail = async () => {
+      if (pokeId <= 0) return;
+      const response = await fetch(
+        `https://pokeapi.co/api/v2/pokemon/${pokeId}`
+      );
+      const results = await response.json();
+      console.log(results);
+
+      //set name
+      setName(
+        results.forms[0].name.charAt(0).toUpperCase() +
+          results.forms[0].name.slice(1)
+      );
+
+      //type
+      setType(results.types[0].type.name);
+
+      //secondType
+      if (results.types.length > 1) {
+        setType2(results.types[1].type.name);
+      } else {
+        setType2("");
+      }
+
+      //set weight
+      setWeight(results.weight);
+
+      //set height
+      setHeight(results.height);
+
+      //set front sprite
+      setFrontSprite(results.sprites.front_default);
+
+      //set back sprite
+      setBackSprite(results.sprites.back_default);
+    };
+    pokeDetail();
+  }, [pokeId]);
+
+  //function below to select individual pokemon to be displayed in the pokemon cards
+
+  const onPokeSelect = (id) => {
+    setPokeId(id);
+  };
+
+  //functions to render new list based on the previous and next buttons
+
   const onNextSelect = () => {
     setOffset(offset + 20);
-    console.log(offset);
   };
 
   const onPrevSelect = () => {
@@ -34,14 +89,22 @@ const App = () => {
     setOffset(offset - 20);
   };
 
+  //all the props are passed down to the main layout below
   return (
     <div>
       <MainLayout
         pokemon={pokemon}
-        pokeName={pokeName}
         onNextSelect={onNextSelect}
         onPrevSelect={onPrevSelect}
         onPokeSelect={onPokeSelect}
+        pokeName={pokeName}
+        pokeId={pokeId}
+        type={type}
+        type2={type2}
+        weight={weight}
+        height={height}
+        frontSprite={frontSprite}
+        backSprite={backSprite}
       />
     </div>
   );
