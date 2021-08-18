@@ -1,6 +1,6 @@
 # react-pokedex
 
-This Pokedex is a react web application built exclusively with React's functional components and the Pokemon API. This Pokedex is a replication of the original Pokedex from Pokemon, and shows all the 898 pokemon in the form of Pokemon cards that display the name, image, type, height and weight of the pokemon. The css for the application is taken from [Justin Kim] (https://github.com/angle943).
+This Pokedex is a react web application built exclusively with React's functional components and the Pokemon API. This Pokedex is a replication of the original Pokedex from Pokemon, and shows all the 898 pokemon in the form of Pokemon cards that display the name, image, type, height and weight of the pokemon. The css for the application is taken from [Justin Kim](https://github.com/angle943).
 
 # Live Demo
 
