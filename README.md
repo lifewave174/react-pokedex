@@ -29,7 +29,7 @@ JavaScript/ES6
 
 React
 
-Pokeapi
+Pokemon Api
 
 Netlify
 
