@@ -39,6 +39,6 @@ Netlify
 
 # License
 
-Special shout out to [Justin Kim] (https://github.com/angle943) for the amazing css!
+Special shout out to [Justin Kim](https://github.com/angle943) for the amazing css!
 
 This project is built under the MIT License.
